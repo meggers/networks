@@ -1,0 +1,9 @@
+Request message: {"username": "", "moviename": "", "starttime": ""}
+Sending request to server...
+Request sent.
+Listening for server response...
+Response received.
+Reponse: {"username":username, "moviename":moviename, "starttime":starttime}
+
+Dumping actions to log file...
+Exiting.
