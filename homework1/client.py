@@ -68,7 +68,7 @@ def get_response():
 def dump_response():
     global actions
 
-    print_message("Dumping actions to log file..."){"username":username, "moviename":moviename, "starttime":starttime}
+    print_message("Dumping actions to log file...")
     print_message("Exiting.")
 
     output = open("client_log.txt", "w")
