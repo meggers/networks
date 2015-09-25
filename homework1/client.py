@@ -6,10 +6,10 @@ import sys, getopt, socket, json
 UDP_HOSTNAME = "localhost"
 UDP_PORT = 5000
 
-actions = [] # log of all actions script takes for file dump
+# log of all actions script takes for file dump
+actions = []
 
 def main(argv):
-    global actions
 
     username = ""
     moviename = ""
@@ -30,10 +30,10 @@ def main(argv):
             starttime = arg
 
     # Main
-    actions.append("Starting Client")
+    print_message("Starting Client")
     send_request(json.dumps({"username":username, "moviename":moviename, "starttime":starttime}))
     response = get_response()
-    actions.append("Reponse: " + response)
+    print_message("Reponse: " + response)
     dump_response()
 
 # sends text over udp using global udp info

@@ -1,0 +1,10 @@
+Starting Server
+Listening for client...
+Request received.
+Request message: {"username":"username", "moviename":"moviename", "starttime":"starttime"}
+
+Generated response: {"password": 138, "moviestart": "00:00:01", "hostname": "bee-ThinkPad-T440s", "moviename": "moviename", "moviecost": 100}
+Sending response to client...
+Response sent.
+Dumping actions to log file...
+Exiting.
