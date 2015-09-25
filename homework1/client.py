@@ -2,10 +2,11 @@
 
 import sys, getopt, socket, json
 
+# UDP static info
 UDP_HOSTNAME = "localhost"
 UDP_PORT = 5000
 
-actions = []
+actions = [] # log of all actions script takes for file dump
 
 def main(argv):
     global actions
@@ -14,6 +15,7 @@ def main(argv):
     moviename = ""
     starttime = ""
 
+    # parse our command line arguments
     try:
       opts, args = getopt.getopt(argv, "u:m:s:", ["username=","moviename=","starttime="])
     except getopt.GetoptError:
@@ -27,12 +29,14 @@ def main(argv):
         elif opt in ("-s", "--starttime"):
             starttime = arg
 
+    # Main
     actions.append("Starting Client")
     send_request(json.dumps({"username":username, "moviename":moviename, "starttime":starttime}))
     response = get_response()
     actions.append("Reponse: " + response)
     dump_response()
 
+# sends text over udp using global udp info
 def send_request(json_message):
     global UDP_HOSTNAME, UDP_PORT
 
@@ -44,6 +48,7 @@ def send_request(json_message):
 
     print_message("Request sent.")
 
+# listens on udp port for any response
 def get_response():
     global UDP_HOSTNAME, UDP_PORT
 
@@ -59,10 +64,11 @@ def get_response():
             sock.close()
             return data
 
+# dumps all actions to file
 def dump_response():
     global actions
 
-    print_message("Dumping actions to log file...")
+    print_message("Dumping actions to log file..."){"username":username, "moviename":moviename, "starttime":starttime}
     print_message("Exiting.")
 
     output = open("client_log.txt", "w")
@@ -70,6 +76,7 @@ def dump_response():
     output.write("\n".join(actions))
     output.close()
 
+# utility function to print action and keep log of them
 def print_message(message):
     global actions
 
